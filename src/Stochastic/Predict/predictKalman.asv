@@ -1,0 +1,42 @@
+%TODO: verificar tamanho das matrizes
+%      Há parâmetros que têm de ser passados num vetor
+ 
+function [x, P] = predictKalman(P, x, F, B, u, Q)
+
+  % Number of inputs control 
+  if nargin < 3
+    F = [];
+  end
+  if nargin < 4
+    B = [];
+  end
+  if nargin < 5
+    u = [];
+  end
+  if nargin < 6
+    Q = [];
+  end
+
+  % Apply defaults
+    if isempty(F)
+        F = eye(size(x,1));
+    end
+    
+    if isempty(B)
+        B = eye(size(x,1),size(u,1));
+    end
+    
+    if isempty(Q)
+        Q = eye(size(ft,1));
+    end
+  
+    ft = F';
+
+    %predicted state estimate
+    x = F * x + B * u;
+         
+    %predicted error covariace
+    P = F * P * ft + Q;
+    
+
+    

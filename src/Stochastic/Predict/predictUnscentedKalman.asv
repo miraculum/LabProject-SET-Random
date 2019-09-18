@@ -1,4 +1,4 @@
-                      % Unscented Kalman predict %
+                      % Unscednted Kalman predict %
 
 % In:
 %   x - Nx1 mean state estimate of previous step
@@ -11,18 +11,18 @@
 %   beta  - Transformation parameter      (optional)
 %   kappa - Transformation parameter      (optional)
 %   mat   - If 1 uses matrix form         (optional, default 0)
-
+%
 % Out:
 %   x - Updated state mean
 %   P - Updated state covariance
-
+%
 % Check:
 %  UnscentedTransformation, CalcWeights, CalcWeightsMatrix, CalcSigmaPoints
 
 
 function [x,P,D] = predictUnscentedKalman(x,P,f,Q,f_param,alpha,beta,kappa,mat)
 
-  % Number of inputs control 
+  % Input control
   if nargin < 2
     errorMessage('predictUnscentedKalman needs at least 2 arguments');
     return;
