@@ -44,6 +44,11 @@ function [] = CallKalmanBucy(inputs)
         predxvalues(i+1) = predx;
     end
 
+    figure('Name','Kalman Bucy Filter');
+    plot(1:iterations, xdifference);
+    legend('True X - Predicted X')
+    title('Kalman Bucy Filter: Subtraction','FontSize',14);
+    ylim([-0.5 1]);
     
     figure('Name','Kalman Bucy');
     plot(1:iterations,truexvalues,'b', 1:iterations,predxvalues,'r');
@@ -53,5 +58,5 @@ function [] = CallKalmanBucy(inputs)
     figure('Name','Kalman Bucy');
     plot(1:iterations, xerror);
     legend('rmse error')
-    title('Kalman Bucy: RMSE error','FontSize',14);
+    title('Kalman Bucy: RMSE','FontSize',14);
     

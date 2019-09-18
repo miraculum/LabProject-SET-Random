@@ -1,6 +1,8 @@
 function [] = CallKalmanFilter(inputs)
 
+    %RMSE function
     calculate_RMSE=@(a,b) sqrt(mean((a(:)-b(:)).^2));
+    
     iterations = 500;   xerror = zeros(1, iterations);  
     truexvalues = zeros(1, iterations); predxvalues = zeros(1, iterations);
     xdifference = zeros(1, iterations);
@@ -52,7 +54,7 @@ function [] = CallKalmanFilter(inputs)
     plot(1:iterations, xdifference);
     legend('True X - Predicted X')
     title('Kalman Filter: Subtraction','FontSize',14);
-    %ylim([-0.5 1]);
+    ylim([-0.5 1]);
     
     figure('Name','Kalman Filter');
     plot(1:iterations,truexvalues,'b', 1:iterations,predxvalues,'r');
@@ -62,5 +64,5 @@ function [] = CallKalmanFilter(inputs)
     figure('Name','Kalman Filter');
     plot(1:iterations, xerror);
     legend('rmse error')
-    title('Kalman Filter: RMSE error','FontSize',14);
+    title('Kalman Filter: RMSE','FontSize',14);
     

@@ -28,8 +28,8 @@ function [inputs] =  KalmanFilterData()
     inputs.realxstart = 1;
     inputs.predxstart = 0;
 
-    inputs.Qk = 0.5;  %covariance of the process noise
-    inputs.Rk = 0.01; %covariance of the observation noise
+    inputs.Qk = 0.05;  %covariance of the process noise
+    inputs.Rk = 0.001; %covariance of the observation noise
 
     inputs.u = 1;               
 
