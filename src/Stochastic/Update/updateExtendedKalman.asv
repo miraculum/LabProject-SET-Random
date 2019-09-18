@@ -6,13 +6,13 @@
 %   u - control vector
 %   h - valid function handle
 %   R - Observation noise covariance matrix        (optional, default zero)
-%   z - observation of the true state x
 %   h1- first derivative of h in the form of function handle.
+
 
 % Out:
 %   x - Updated state mean
 %   P - Updated state covariance
-%   h1- first derivative of h in the form of function handle.        
+%   f1- first derivative of f in the form of function handle.        
 
 
 function [x,P,h1] = updateExtendedKalman(x,P,u,h,R,z,h1)
@@ -32,8 +32,11 @@ function [x,P,h1] = updateExtendedKalman(x,P,u,h,R,z,h1)
         H = h1(x);
             
         y = z - h(x); 
-        S = H * P * H' + R;            %Innovation (or residual) covariance
-        K = P * H' / S;                %Near-optimal Kalman gain
-        x = x + K * y;                 %Updated state estimate		
+        S = H * P * H' + R;                 %Innovation (or residual) covariance
+        K = P * H' / S;                     %Near-optimal Kalman gain
+        x = x + K * y;                      %Updated state estimate		
         I = eye(size(K,1));
-        P = (I - K * H) * P;           %Updated covariance estimate	 
+        P = (I - K * H) * P;                %Updated covariance estimate	
+    end
+    
+

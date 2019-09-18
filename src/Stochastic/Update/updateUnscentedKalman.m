@@ -1,8 +1,5 @@
-%UKF_UPDATE1 -  Additive form Unscented Kalman Filter update step
-%
-% Syntax:
-%   [M,P,K,MU,S,LH] = UKF_UPDATE1(M,P,Y,h,R,param,alpha,beta,kappa,mat)
-%
+                        % Unscented Kalman update %
+
 % In:
 %   M  - Mean state estimate after prediction step
 %   P  - State covariance after prediction step
@@ -17,7 +14,7 @@
 %   beta  - Transformation parameter      (optional)
 %   kappa - Transformation parameter      (optional)
 %   mat   - If 1 uses matrix form         (optional, default 0)
-%
+
 % Out:
 %   M  - Updated state mean
 %   P  - Updated state covariance
@@ -25,13 +22,6 @@
 %   MU - Predictive mean of Y
 %   S  - Predictive covariance Y
 %   LH - Predictive probability (likelihood) of measurement.
-%
-% Description:
-%   Perform additive form Discrete Unscented Kalman Filter (UKF)
-%   measurement update step. Assumes additive measurement
-%   noise.
-%
-% See also:
 
 
 function [M,P,K,MU,S,LH] = updateUnscentedKalman(M,P,Y,h,R,h_param,alpha,beta,kappa,mat)
