@@ -1,23 +1,24 @@
 
-%Kalman Filter
+                   %%%%%%%%%% Kalman Filter %%%%%%%%%%%%
 
 %[inputs] = KalmanFilterData();
 %CallKalmanFilter(inputs);
 
 
-%Kalman Bucy
+                  %%%%%%%% Kalman Bucy Filter %%%%%%%%%%%
 
 %[inputs] = KalmanBucyData();
 %CallKalmanBucy(inputs);
 
 
-%Extended Kalman Filter
+                %%%%%%%%% Extended Kalman Filter %%%%%%%%%%
+
 
 [inputs] = ExtendedKalmanFilterData();
 CallExtendedKalmanFilter(inputs);
 
 
-%Unscented Kalman
+                %%%%%%%%% Unscented Kalman Filter %%%%%%%%%
 
 %[inputs] = ExtendedKalmanFilterData();
 %CallUnscentedKalman(inputs)

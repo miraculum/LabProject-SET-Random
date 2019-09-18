@@ -32,6 +32,7 @@ function [inputs] = ExtendedKalmanFilterData()
     inputs.Qk = 0.05;           %covariance of the process noise
     inputs.Rk = 0.001;          %covariance of the observation noise
     
+    
     %Disturbances: Error covariance and Observation noise
     inputs.w = mvnrnd(zeros(size(inputs.Qk, 1), 1), inputs.Qk);
     inputs.v = mvnrnd(zeros(size(inputs.Rk, 1), 1), inputs.Rk);
