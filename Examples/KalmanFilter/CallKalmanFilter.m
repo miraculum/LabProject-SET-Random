@@ -16,7 +16,7 @@ function [] = CallKalmanFilter(inputs, iterations)
 
     %Predicted X
     [predx, predp, predy] = KFPredictedX(inputs.P,inputs.F,...
-    inputs.predxstart, inputs.B, inputs.u, inputs.Qk, inputs.H, inputs.Rk, z);
+    inputs.predxstart, inputs.B, inputs.u, inputs.Qk,inputs.H,inputs.Rk,z);
 
     %RMSE Error 
     xerror(1) = norm(calculate_RMSE(truex, predx));
