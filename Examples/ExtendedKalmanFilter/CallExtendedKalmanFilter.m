@@ -57,7 +57,7 @@ function [] = CallExtendedKalmanFilter(inputs)
     figure('Name','Extended Kalman Filter');
     plot(1:iterations, xdifference);
     legend('True X - Predicted X')
-    title('Kalman Bucy Filter: Subtraction','FontSize',14);
+    title('Extended Kalman Filter: Subtraction','FontSize',14);
     ylim([-0.5 1]);
     
     figure('Name','Extended Kalman Filter');
