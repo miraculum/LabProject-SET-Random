@@ -1,5 +1,6 @@
 function [inputs] =  KalmanFilterData()
 
+    %Example 1: 1x1 matrix
     m = 1000;
     b = 50;
 
@@ -13,6 +14,31 @@ function [inputs] =  KalmanFilterData()
 
     [inputs.F, inputs.B, inputs.H, inputs.D] = ssdata(cruise_ss);
 
+    %Example 2: 2x2 matrix
+    %{
+    m = 1;
+    b = 10;
+    k = 20;
+
+    A = [0       1;
+    -k/m   -b/m];
+
+    B = [  0;
+        1/m];
+
+    C = [1 0];
+
+    D = [0];
+
+    Ts = 1/100;
+
+    sys = ss(A,B,C,D);
+    sys_d = c2d(sys,Ts,'zoh');
+    inputs.F = sys_d.A; inputs.B = sys_d.B; inputs.H = sys_d.C; inputs.D = sys_d.D; 
+    %}
+    
+    
+    %Exact data, insert below
     %{
     inputs.F = -0.05;           %state-transition model
     inputs.B = 1.0000e-03;      %control-input model, for each time-step

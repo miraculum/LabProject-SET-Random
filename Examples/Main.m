@@ -1,15 +1,15 @@
 
                    %%%%%%%%%% Kalman Filter %%%%%%%%%%%%
 
-%[inputs] = KalmanFilterData();
-%CallKalmanFilter(inputs);
+[inputs] = KalmanFilterData();
+CallKalmanFilter(inputs);
 
 
                 %%%%%%%%% Extended Kalman Filter %%%%%%%%%%
 
 
-[inputs] = ExtendedKalmanFilterData();
-CallExtendedKalmanFilter(inputs);
+%[inputs] = ExtendedKalmanFilterData();
+%CallExtendedKalmanFilter(inputs);
 
 
                  %%%%%%%%% Kalman Bucy Filter %%%%%%%%%%%

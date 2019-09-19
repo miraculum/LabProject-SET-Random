@@ -19,11 +19,12 @@ function [] = CallKalmanFilter(inputs)
     inputs.predxstart, inputs.B, inputs.u, inputs.Qk, inputs.H, inputs.Rk, z);
 
     %RMSE Error 
-    xerror(1) = calculate_RMSE(truex, predx);
+    xerror(1) = norm(calculate_RMSE(truex, predx));
     %Save true X and predicted X
-    truexvalues(1) = truex; predxvalues(1) = predx;
+    truexvalues(1) = norm(truex);
+    predxvalues(1) = norm(predx);
 
-    xdifference(1) = truex - predx;
+    xdifference(1) = norm(truex) - norm(predx);
 
     %Cycle for all iterations
     for i = 1:(iterations-1)
@@ -42,14 +43,14 @@ function [] = CallKalmanFilter(inputs)
             inputs.B, inputs.u, inputs.Qk, inputs.H, inputs.Rk, z);
 
         %RMSE Error
-        xerror(i+1) = calculate_RMSE(truex, predx);
+        xerror(i+1) = norm(calculate_RMSE(truex, predx));
         
-        truexvalues(i+1) = truex;
-        predxvalues(i+1) = predx;
+        truexvalues(i+1) = norm(truex);
+        predxvalues(i+1) = norm(predx);
         
-        xdifference(i+1) = truex - predx;
+        xdifference(i+1) = norm(truex) - norm(predx);
     end
-
+    
     figure('Name','Kalman Filter');
     plot(1:iterations, xdifference);
     legend('True X - Predicted X')

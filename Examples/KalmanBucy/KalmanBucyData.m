@@ -15,7 +15,7 @@ function [inputs] = KalmanBucyData()
 
 
     [inputs.F, inputs.B, inputs.H, inputs.D] = ssdata(cruise_ss);
-
+    
     %{
     inputs.F = -0.05;           %state-transition model
     inputs.B = 1.0000e-03;      %control-input model, for each time-step

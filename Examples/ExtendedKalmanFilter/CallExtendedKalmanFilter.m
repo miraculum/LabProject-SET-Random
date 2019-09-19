@@ -23,11 +23,11 @@ function [] = CallExtendedKalmanFilter(inputs)
         inputs.predxstart, inputs.u, inputs.Qk, inputs.h, inputs.Rk, z, f1, h1);
     
     %RMSE Error 
-    xerror(1) = calculate_RMSE(truex, predx);
+    xerror(1) = norm(calculate_RMSE(truex, predx));
     %Save true X and predicted X
-    truexvalues(1) = truex; predxvalues(1) = predx;
+    truexvalues(1) = norm(truex); predxvalues(1) = norm(predx);
     
-    xdifference(1) = truex - predx;
+    xdifference(1) = norm(truex) - norm(predx);
     
     %Cycle for all iterations
     for i = 1:(iterations-1)
@@ -46,12 +46,12 @@ function [] = CallExtendedKalmanFilter(inputs)
             inputs.u, inputs.Qk, inputs.h, inputs.Rk, z, f1, h1);
         
         %RMSE Error
-        xerror(i+1) = calculate_RMSE(truex, predx);
+        xerror(i+1) = calculate_RMSE(norm(truex), norm(predx));
         
-        truexvalues(i+1) = truex;
-        predxvalues(i+1) = predx;
+        truexvalues(i+1) = norm(truex);
+        predxvalues(i+1) = norm(predx);
         
-        xdifference(i+1) = truex - predx;
+        xdifference(i+1) = norm(truex) - norm(predx);
     end
 
     figure('Name','Extended Kalman Filter');

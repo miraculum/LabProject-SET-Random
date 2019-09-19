@@ -2,7 +2,8 @@ function [] = CallKalmanBucy(inputs)
 
     calculate_RMSE=@(a,b) sqrt(mean((a(:)-b(:)).^2));
     iterations = 20;   xerror = zeros(1, iterations);  
-    truexvalues = zeros(1, iterations);predxvalues = zeros(1, iterations);
+    truexvalues = zeros(1, iterations); predxvalues = zeros(1, iterations);
+    xdifference = zeros(1, iterations);
     
     %Kalman Bucy
     fprintf('Iteration = 1/%d\n',iterations);
@@ -16,9 +17,12 @@ function [] = CallKalmanBucy(inputs)
         inputs.P, inputs.H, inputs.Rk, inputs.u, inputs.Qk, inputs.B, z);
 
     %RMSE Error 
-    xerror(1) = calculate_RMSE(truex, predx);
+    xerror(1) = norm(calculate_RMSE(truex, predx));
     %Save true X and predicted X
-    truexvalues(1) = truex; predxvalues(1) = predx;
+    truexvalues(1) = norm(truex);
+    predxvalues(1) = norm(predx);
+
+    xdifference(1) = norm(truex) - norm(predx);
     
 
     %Cycle for all iterations
@@ -38,10 +42,12 @@ function [] = CallKalmanBucy(inputs)
         predp, inputs.H, inputs.Rk, inputs.u, inputs.Qk, inputs.B, z);
 
         %RMSE Error
-        xerror(i+1) = calculate_RMSE(truex, predx);
+        xerror(i+1) = norm(calculate_RMSE(truex, predx));
         
-        truexvalues(i+1) = truex;
-        predxvalues(i+1) = predx;
+        truexvalues(i+1) = norm(truex);
+        predxvalues(i+1) = norm(predx);
+        
+        xdifference(i+1) = norm(truex) - norm(predx);
     end
 
     figure('Name','Kalman Bucy Filter');
