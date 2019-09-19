@@ -11,7 +11,6 @@ function [inputs] =  KalmanFilterData()
 
     cruise_ss = ss(A,B,C,D);
 
-
     [inputs.F, inputs.B, inputs.H, inputs.D] = ssdata(cruise_ss);
 
     %Example 2: 2x2 matrix
