@@ -1,9 +1,9 @@
-function [] = CallExtendedKalmanFilter(inputs)
+function [] = CallExtendedKalmanFilter(inputs, iterations)
 
     %RMSE function
     calculate_RMSE=@(a,b) sqrt(mean((a(:)-b(:)).^2));
     
-    iterations = 200;   xerror = zeros(1, iterations);  
+    xerror = zeros(1, iterations);  
     truexvalues = zeros(1, iterations); predxvalues = zeros(1, iterations);
     xdifference = zeros(1, iterations);
     
