@@ -1,7 +1,7 @@
 function [] = CallKalmanBucy(inputs)
 
     calculate_RMSE=@(a,b) sqrt(mean((a(:)-b(:)).^2));
-    iterations = 20;   xerror = zeros(1, iterations);  
+    iterations = 2;   xerror = zeros(1, iterations);  
     truexvalues = zeros(1, iterations); predxvalues = zeros(1, iterations);
     xdifference = zeros(1, iterations);
     
@@ -13,7 +13,7 @@ function [] = CallKalmanBucy(inputs)
     inputs.u, inputs.w, inputs.H, inputs.v);
 
     %Predicted X
-    [predx, predp, predy] = KalmanBucy(inputs.F, inputs.predxstart,...
+    [predx, predp, predy] = KBPredictedX(inputs.F, inputs.predxstart,...
         inputs.P, inputs.H, inputs.Rk, inputs.u, inputs.Qk, inputs.B, z);
 
     %RMSE Error 
@@ -38,7 +38,7 @@ function [] = CallKalmanBucy(inputs)
             inputs.u, inputs.w, inputs.H, inputs.v);
 
         %Predicted X
-        [predx, predp, predy] = KalmanBucy(inputs.F, predx,...
+        [predx, predp, predy] = KBPredictedX(inputs.F, predx,...
         predp, inputs.H, inputs.Rk, inputs.u, inputs.Qk, inputs.B, z);
 
         %RMSE Error

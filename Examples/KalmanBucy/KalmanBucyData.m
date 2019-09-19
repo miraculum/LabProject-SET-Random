@@ -1,8 +1,5 @@
 function [inputs] = KalmanBucyData()
 
-    inputs.function = @(x,u) x + log(u); %syms x; syms u;
-
-    
     m = 1000;
     b = 50;
 
@@ -15,7 +12,7 @@ function [inputs] = KalmanBucyData()
 
 
     [inputs.F, inputs.B, inputs.H, inputs.D] = ssdata(cruise_ss);
-    
+
     %{
     inputs.F = -0.05;           %state-transition model
     inputs.B = 1.0000e-03;      %control-input model, for each time-step
@@ -29,8 +26,8 @@ function [inputs] = KalmanBucyData()
     inputs.u = 1;               %control vector
 
     
-    inputs.Qk = 0.05;           %covariance of the process noise
-    inputs.Rk = 0.001;          %covariance of the observation noise
+    inputs.Qk = 0.5;           %covariance of the process noise
+    inputs.Rk = 0.1;          %covariance of the observation noise
     
     
     %Disturbances: Error covariance and Observation noise

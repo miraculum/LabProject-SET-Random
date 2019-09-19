@@ -1,5 +1,4 @@
 
-function [x, p, y] = KBPredictedX(P, F, xkmin1, B, u, Qk, H, Rk, z)
+function [x, p, y] = KBPredictedX(F, xkmin1, P, H, Rk, u, Qk, B, z)
 
-[predx, predp] = predictKalman(P, xkmin1, F, B, u, Qk);
-[x, p, y] = updateKalman(predx, predp, H, Rk, z);
+    [x, p, y] = KalmanBucy(F, xkmin1, P, H, Rk, u, Qk, B, z);
