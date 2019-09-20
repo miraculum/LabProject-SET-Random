@@ -20,7 +20,7 @@
 %  UnscentedTransformation, CalcWeights, CalcWeightsMatrix, CalcSigmaPoints
 
 
-function [x,P,D] = predictUnscentedKalman(x,P,f,Q,f_param,alpha,beta,kappa,mat)
+function [x,P,D]=predictUnscentedKalman(x,P,f,Q,f_param,alpha,beta,kappa,mat)
 
   % Number of inputs control 
   if nargin < 2

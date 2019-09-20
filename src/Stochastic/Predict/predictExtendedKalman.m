@@ -36,7 +36,8 @@ function [x,P,f1] = predictExtendedKalman(x,P,u,f,Q,f1)
 
         %Matrix size test
 
-        if size(F,2) ~= size(P,1) && size(F,2) ~= size(P,2) && size(Q,1) ~= size(F,1) && size(Q,2) ~= size(F,1)
+        if size(F,2) ~= size(P,1) && size(F,2) ~= size(P,2) && size(Q,1)...
+                ~= size(F,1) && size(Q,2) ~= size(F,1)
             errorMessage("matrix size error in predictExtendedKalman");
         end
 
