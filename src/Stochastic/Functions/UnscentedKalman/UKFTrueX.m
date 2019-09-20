@@ -1,5 +1,5 @@
 
-function [xk, z] = UKFTrueX(f, h, xkmin1, u, w, v)
+function [xk] = UKFTrueX(f, xkmin1, u, w)
 
     xk = f(xkmin1, u) + w;
-    z = h(xk) + v;
+    

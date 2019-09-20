@@ -52,7 +52,6 @@ function [] = CallKalmanFilter(inputs, iterations)
     end
     
     [numRows,numCols] = size(predx);
-    disp(numRows); disp(numCols); 
     if (numRows==1 && numCols==1)
         figure('Name','Extended Kalman Filter');
         plot(1:iterations, xdifference);

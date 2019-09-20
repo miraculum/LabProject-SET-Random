@@ -20,5 +20,5 @@ CallKalmanFilter(inputs, 300);
 
                 %%%%%%%%% Unscented Kalman Filter %%%%%%%%%
 
-%[inputs] = ExtendedKalmanFilterData();
+%[inputs] = UnscentedKalmanFilterData();
 %CallUnscentedKalman(inputs, 300)

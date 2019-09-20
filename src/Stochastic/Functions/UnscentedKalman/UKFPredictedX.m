@@ -1,4 +1,7 @@
 
-function [x, p, f1, h1] =UKFPredictedX(P, f, xkmin1, u, Qk, h, Rk, z, f1, h1)
-    [x, p, f1] = predictExtendedKalman(xkmin1, P, u, f, Qk, f1);
-    [x, p, h1] = updateExtendedKalman(x, p, u, h, Rk, z, h1);
+function [x, p, f, y ] = UKFPredictedX(xkmin1, p, f, Qk, Rk, f_param, alpha, beta, kappa, mat, y)
+    %Call predict and updte functions
+    [x, p] = predictUnscentedKalman(xkmin1, p, f, Qk, f_param, alpha, beta, kappa, mat);
+    [x, p] = updateUnscentedKalman(x, p, y, f, Rk, f_param, alpha, beta, kappa, mat);
+    
+

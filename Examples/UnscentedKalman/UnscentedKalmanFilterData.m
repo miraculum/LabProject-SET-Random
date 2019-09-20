@@ -1,10 +1,11 @@
 function [inputs] = UnscentedKalmanFilterData()
 
     inputs.f = @(x,u)(2*u)/(x^2+1);
-    inputs.h = @(x)x^2;
 
-    inputs.parameters.alpha = []; inputs.parameters.kappa = []; inputs.parameters.beta = []; 
+    inputs.alpha = []; inputs.kappa = []; inputs.beta = []; inputs.beta = []; inputs.mat = 0; 
+    inputs.f_param = 3;
 
+    inputs.Y = [3, 0.7089, 3.9065];
     %{
     m = 1000;
     b = 50;
