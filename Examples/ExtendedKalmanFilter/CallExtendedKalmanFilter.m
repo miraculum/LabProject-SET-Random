@@ -21,7 +21,6 @@ function [] = CallExtendedKalmanFilter(inputs, iterations)
     %Predicted X
     [predx, predp, f1, h1] = EFKPredictedX(inputs.P, inputs.f,...
         inputs.predxstart, inputs.u, inputs.Qk, inputs.h, inputs.Rk, z, f1, h1);
-    
     %RMSE Error 
     xerror(1) = norm(calculate_RMSE(truex, predx));
     %Save true X and predicted X
@@ -54,12 +53,15 @@ function [] = CallExtendedKalmanFilter(inputs, iterations)
         xdifference(i+1) = norm(truex) - norm(predx);
     end
 
-    figure('Name','Extended Kalman Filter');
-    plot(1:iterations, xdifference);
-    legend('True X - Predicted X')
-    title('Extended Kalman Filter: Subtraction','FontSize',14);
-    ylim([-0.5 1]);
-    
+    [numRows,numCols] = size(predx);
+    if (numRows==1 && numCols==1)
+        figure('Name','Extended Kalman Filter');
+        plot(1:iterations, xdifference);
+        legend('True X - Predicted X')
+        title('Extended Kalman Filter: Subtraction','FontSize',14);
+        ylim([-0.5 1]);
+    end
+
     figure('Name','Extended Kalman Filter');
     plot(1:iterations,truexvalues,'b', 1:iterations,predxvalues,'r');
     legend('true x','predicted x');

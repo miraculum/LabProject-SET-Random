@@ -51,11 +51,15 @@ function [] = CallKalmanFilter(inputs, iterations)
         xdifference(i+1) = norm(truex) - norm(predx);
     end
     
-    figure('Name','Kalman Filter');
-    plot(1:iterations, xdifference);
-    legend('True X - Predicted X')
-    title('Kalman Filter: Subtraction','FontSize',14);
-    ylim([-0.5 1]);
+    [numRows,numCols] = size(predx);
+    disp(numRows); disp(numCols); 
+    if (numRows==1 && numCols==1)
+        figure('Name','Extended Kalman Filter');
+        plot(1:iterations, xdifference);
+        legend('True X - Predicted X')
+        title('Extended Kalman Filter: Subtraction','FontSize',14);
+        ylim([-0.5 1]);
+    end
     
     figure('Name','Kalman Filter');
     plot(1:iterations,truexvalues,'b', 1:iterations,predxvalues,'r');

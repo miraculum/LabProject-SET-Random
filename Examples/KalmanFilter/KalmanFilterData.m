@@ -1,6 +1,7 @@
 function [inputs] =  KalmanFilterData()
 
     %Example 1: 1x1 matrix
+    
     m = 1000;
     b = 50;
 

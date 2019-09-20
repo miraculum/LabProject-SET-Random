@@ -4,6 +4,7 @@ function [inputs] = ExtendedKalmanFilterData()
     inputs.h = @(x)x^2;             %Function h(x)
     
     %Example 1: 1x1 matrix
+    
     m = 1000;
     b = 50;
 
@@ -38,8 +39,7 @@ function [inputs] = ExtendedKalmanFilterData()
     sys = ss(A,B,C,D);
     sys_d = c2d(sys,Ts,'zoh');
     inputs.F = sys_d.A; inputs.B = sys_d.B; inputs.H = sys_d.C; inputs.D = sys_d.D; 
-    %}
-    
+    %}    
     
     %Exact data, insert below
     %{
